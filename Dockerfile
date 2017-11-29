@@ -4,4 +4,4 @@ RUN pip install docker
 RUN pip install fake_useragent
 RUN pip install pytest
 RUN pip install requests
-CMD py.test ./main.py --html=report.html
+RUN py.test ./main.py --html=report.html

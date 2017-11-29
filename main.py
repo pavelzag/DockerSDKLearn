@@ -1,13 +1,15 @@
-from docker_handler import pull_docker, run_docker
-import pytest
-from httplib import HTTPConnection
-import requests
+import docker
 from fake_useragent import UserAgent
-from string_gen import generate_big_header
+from httplib import HTTPConnection
+import os
+import pytest
+from random import choice
+import requests
+from string import ascii_uppercase
+import time
 
 
 class MyHTTPConnection(HTTPConnection):
-
     _http_vsn_str = '6.9'
 
 ip = '127.0.0.1'
@@ -18,6 +20,27 @@ url = '{}{}'.format('http://', ip)
 def docker_handling():
     pull_docker()
     run_docker()
+
+
+def generate_big_header():
+    return ''.join(choice(ascii_uppercase) for i in range(32000))
+
+
+def pull_docker():
+    client = docker.from_env(version="1.22")
+    start_time = time.time()
+    image = client.images.pull("nginx")
+    print('{} {}'.format('Time to pull', time.time() - start_time))
+    print(image.id)
+
+
+def run_docker():
+    start_time = time.time()
+    client = docker.from_env(version="1.22")
+    os.system('docker run -d --name test-nginx -p 8080:8080 -v $(pwd):/example/nginx/index.html:ro nginx:latest')
+    print('{} {}'.format('Time to run', time.time() - start_time))
+    client.containers.list()
+    print('{} {}'.format('Time to list', time.time() - start_time))
 
 
 def generate_report():

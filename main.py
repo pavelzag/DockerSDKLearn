@@ -104,16 +104,3 @@ def test_other_status_code():
 def test_big_header():
     assert big_header_method() == 400
 
-
-
-# import docker
-#
-# if __name__ == '__main__':
-#     print('ya')
-#     client = docker.from_env(version="1.22")
-#     image = client.images.pull("alpine")
-#     print client.containers.run("alpine", ["echo", "hello", "world"])
-#     # client = docker.DockerClient(version="1.22", base_url='unix://var/run/docker.sock')
-#     for container in client.containers.list():
-#         print container.id
-#         print(client)

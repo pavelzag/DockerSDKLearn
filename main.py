@@ -81,7 +81,7 @@ def big_header_method():
     return response.status_code
 
 
-def test_get_request():
+def test_get_request(docker_handling):
     assert get_request(url) == 200
 
 

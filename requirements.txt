@@ -9,7 +9,7 @@ funcsigs==1.0.2
 idna==2.6
 ipaddress==1.0.18
 pluggy==0.6.0
-py==1.5.2
+py==1.10.0
 pytest==3.3.0
 pytest-html==1.16.0
 pytest-metadata==1.5.1

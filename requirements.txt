@@ -15,6 +15,6 @@ pytest-html==1.16.0
 pytest-metadata==1.5.1
 requests==2.18.4
 six==1.11.0
-urllib3==1.22
+urllib3==1.26.5
 useragent==0.1.1
 websocket-client==0.44.0
